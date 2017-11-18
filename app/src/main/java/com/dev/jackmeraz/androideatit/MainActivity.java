@@ -1,5 +1,6 @@
 package com.dev.jackmeraz.androideatit;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent singin = new Intent(MainActivity.this, Singin.class);
+                startActivity(singin);
             }
         });
 
