@@ -1,5 +1,6 @@
 package com.dev.jackmeraz.androideatit;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -70,6 +71,12 @@ public class Comida_List extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int posicion, boolean isLongClick) {
                         Toast.makeText(Comida_List.this, "" + local.getName(), Toast.LENGTH_SHORT).show();
+                        //Inicia nuevo activity de Detalles
+
+                        Intent ComidaDetail = new Intent(Comida_List.this, ComidaDetail.class);
+                        ComidaDetail.putExtra("ComidaId", adapter.getRef(posicion).getKey()); //Envia ComidaId al nuevo activity
+                        startActivity(ComidaDetail);
+
                     }
                 });
 

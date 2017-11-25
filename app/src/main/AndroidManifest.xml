@@ -24,7 +24,8 @@
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Comida_List"></activity>
+        <activity android:name=".Comida_List" />
+        <activity android:name=".ComidaDetail"></activity>
     </application>
 
 </manifest>
