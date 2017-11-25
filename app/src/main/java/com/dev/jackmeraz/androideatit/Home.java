@@ -1,5 +1,6 @@
 package com.dev.jackmeraz.androideatit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -37,6 +38,8 @@ public class Home extends AppCompatActivity
     RecyclerView recycler_menu;
     RecyclerView.LayoutManager layoutManager;
 
+    FirebaseRecyclerAdapter <Categoria, MenuViewHolder> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +51,7 @@ public class Home extends AppCompatActivity
 
         //Iniciar Firebase
         database = FirebaseDatabase.getInstance();
-        categoria = database.getReference("Categoria");
+        categoria = database.getReference("Categorias");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +89,7 @@ public class Home extends AppCompatActivity
 
     private void loadMenu() {
 
-        FirebaseRecyclerAdapter <Categoria, MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Categoria, MenuViewHolder>(Categoria.class, R.layout.menu_item,MenuViewHolder.class,categoria) {
+        adapter = new FirebaseRecyclerAdapter<Categoria, MenuViewHolder>(Categoria.class, R.layout.menu_item,MenuViewHolder.class,categoria) {
             @Override
             protected void populateViewHolder(MenuViewHolder ViewHolder, Categoria categoria, int i) {
                 ViewHolder.txtMenuName.setText(categoria.getName());
@@ -96,7 +99,12 @@ public class Home extends AppCompatActivity
                 ViewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int posicion, boolean isLongClick) {
-                        Toast.makeText(Home.this, ""+clickItem.getName(), Toast.LENGTH_SHORT).show();
+                        //Obtiene CategoriaId y lo envia al nuevo activity Comida
+                        Intent ComidaList = new Intent(Home.this, Comida_List.class);
+                        //Porque CategoryId es la clave, así que solo obtenemos la clave de este elemento
+                        ComidaList.putExtra("CategoriaId", adapter.getRef(posicion).getKey());
+                        startActivity(ComidaList);
+
                     }
                 });
 
