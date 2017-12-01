@@ -54,6 +54,7 @@ public class Singin extends AppCompatActivity {
                             //Obtener Informacion del Usuario
                             mDialog.dismiss();
                             User user = dataSnapshot.child(txtphone.getText().toString()).getValue(User.class);
+                            user.setTelefono(txtphone.getText().toString()); //Establece Telefono
                             if (user.getPassword().equals(txtpass.getText().toString())) {
                                 Toast.makeText(Singin.this, "Inicio de Sesion Exitoso !", Toast.LENGTH_SHORT).show();
                                 Intent homeIntent = new Intent(Singin.this, Home.class);

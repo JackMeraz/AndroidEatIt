@@ -8,6 +8,7 @@ public class User {
 
     private String Name;
     private String Password;
+    private String Telefono;
 
     public User() {
     }
@@ -15,6 +16,15 @@ public class User {
     public User(String name, String password) {
         Name = name;
         Password = password;
+
+    }
+
+    public String getTelefono() {
+        return Telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        Telefono = telefono;
     }
 
     public String getName() {
