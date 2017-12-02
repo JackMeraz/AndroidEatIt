@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dev.jackmeraz.androideatit.Comida_List">
 
-    <android.support.v7.widget.RecyclerView
+    <com.mancj.materialsearchbar.MaterialSearchBar
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler_comida"
-        android:scrollbars="vertical"
+        android:layout_height="wrap_content"
+        android:id="@+id/BarraBusqueda"
+        android:layout_alignParentTop="true"
+        app:mt_speechMode="false"
+        app:mt_hint="Ingrese su Busqueda"
         />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_comida"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/BarraBusqueda"
+        android:scrollbars="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="59dp" />
 
 
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
