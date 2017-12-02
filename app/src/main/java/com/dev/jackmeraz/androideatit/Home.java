@@ -149,11 +149,16 @@ public class Home extends AppCompatActivity
         if (id == R.id.nav_menu) {
             // Handle the camera action
         } else if (id == R.id.nav_cart) {
-
+            Intent cartIntent = new Intent(Home.this,Carrito.class);
+            startActivity(cartIntent);
         } else if (id == R.id.nav_orden) {
-
+            Intent ordenStatusIntent = new Intent(Home.this,OrdenStatus.class);
+            startActivity(ordenStatusIntent);
         } else if (id == R.id.nav_LogOut) {
-
+            //LogOut
+            Intent SingIn = new Intent(Home.this, Singin.class);
+            SingIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(SingIn);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
