@@ -37,6 +37,10 @@ public class OrdenStatus extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        if (getIntent() == null)
+            cargarOrdenes(Common.CurrentUser.getTelefono());
+        else
+            cargarOrdenes(getIntent().getStringExtra("userPhone"));
         cargarOrdenes(Common.CurrentUser.getTelefono());
 
     }
@@ -54,7 +58,7 @@ public class OrdenStatus extends AppCompatActivity {
             protected void populateViewHolder(OrdenViewHolder ordenViewHolder, Pedido pedido, int i) {
 
                 ordenViewHolder.txtOrdenId.setText(adapter.getRef(i).getKey());
-                ordenViewHolder.txtOrdenStatus.setText(convertCodigoAStatus(pedido.getStatus()));
+                ordenViewHolder.txtOrdenStatus.setText(Common.convertCodigoAStatus(pedido.getStatus()));
                 ordenViewHolder.txtOrdenDireccion.setText(pedido.getDireccion());
                 ordenViewHolder.txtOrdenTelefono.setText(pedido.getTelefono());
             }
@@ -63,13 +67,5 @@ public class OrdenStatus extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private String convertCodigoAStatus(String status) {
 
-        if (status.equals("0"))
-            return "En Espera de ser Procesado";
-        else if (status.equals("1"))
-            return "Preparando Orden para ser Enviada";
-        else
-            return "Orden en proceso de entrega";
-    }
 }

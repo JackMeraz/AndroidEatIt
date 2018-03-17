@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.dev.jackmeraz.androideatit.Common.Common;
 import com.dev.jackmeraz.androideatit.Interface.ItemClickListener;
 import com.dev.jackmeraz.androideatit.Model.Categoria;
+import com.dev.jackmeraz.androideatit.Service.ListenOrdenes;
 import com.dev.jackmeraz.androideatit.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -84,7 +85,11 @@ public class Home extends AppCompatActivity
         recycler_menu.setLayoutManager(layoutManager);
 
         loadMenu();
-        
+
+
+        //Registrar Servicio
+        Intent servicio = new Intent(Home.this, ListenOrdenes.class);
+        startService(servicio);
 
     }
 

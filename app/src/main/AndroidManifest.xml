@@ -27,7 +27,12 @@
         <activity android:name=".Comida_List" />
         <activity android:name=".ComidaDetail" />
         <activity android:name=".Carrito" />
-        <activity android:name=".OrdenStatus"></activity>
+        <activity android:name=".OrdenStatus" />
+
+        <service
+            android:name=".Service.ListenOrdenes"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
